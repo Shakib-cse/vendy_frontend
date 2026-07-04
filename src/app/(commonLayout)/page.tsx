@@ -1,9 +1,10 @@
+import Banner from "@/components/commonLayouts/Banner";
 
 
 export default function Home() {
   return (
     <main>
-        hi
+        <Banner />
     </main>
   );
 }
