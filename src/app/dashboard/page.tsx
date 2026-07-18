@@ -23,7 +23,7 @@ export default function DashboardPage() {
         <div className="bg-white rounded-xl p-5 shadow-sm border border-border/50">
           <div className="flex justify-between items-start mb-4">
             <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Total Revenue</span>
-            <div className="p-1.5 bg-muted rounded-md text-muted-foreground">
+            <div className="p-1.5 border border-border rounded-md text-muted-foreground bg-transparent">
               <Wallet size={16} />
             </div>
           </div>
@@ -37,7 +37,7 @@ export default function DashboardPage() {
         <div className="bg-white rounded-xl p-5 shadow-sm border border-border/50">
           <div className="flex justify-between items-start mb-4">
             <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Outstanding Invoices</span>
-            <div className="p-1.5 bg-muted rounded-md text-muted-foreground">
+            <div className="p-1.5 border border-border rounded-md text-muted-foreground bg-transparent">
               <FileText size={16} />
             </div>
           </div>
@@ -51,7 +51,7 @@ export default function DashboardPage() {
         <div className="bg-white rounded-xl p-5 shadow-sm border border-border/50">
           <div className="flex justify-between items-start mb-4">
             <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Total Customers</span>
-            <div className="p-1.5 bg-muted rounded-md text-muted-foreground">
+            <div className="p-1.5 border border-border rounded-md text-muted-foreground bg-transparent">
               <Users size={16} />
             </div>
           </div>
@@ -65,7 +65,7 @@ export default function DashboardPage() {
         <div className="bg-white rounded-xl p-5 shadow-sm border border-border/50">
           <div className="flex justify-between items-start mb-4">
             <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Active Items</span>
-            <div className="p-1.5 bg-muted rounded-md text-muted-foreground">
+            <div className="p-1.5 border border-border rounded-md text-muted-foreground bg-transparent">
               <Package size={16} />
             </div>
           </div>

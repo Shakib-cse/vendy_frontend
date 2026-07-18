@@ -1,4 +1,7 @@
+"use client"
+
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { 
   LayoutDashboard, 
   FileText, 
@@ -9,8 +12,21 @@ import {
 } from "lucide-react"
 
 export function Sidebar() {
+  const pathname = usePathname()
+
+  const navItems = [
+    { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+    { name: "Invoices", href: "/dashboard/invoices", icon: FileText },
+    { name: "Credit Notes", href: "/dashboard/credit-notes", icon: CreditCard },
+  ]
+
+  const managementItems = [
+    { name: "Customers", href: "/dashboard/customers", icon: Users },
+    { name: "Items/Products", href: "/dashboard/products", icon: Package },
+  ]
+
   return (
-    <aside className="w-64 h-full bg-white border-r border-border hidden md:flex flex-col">
+    <aside className="w-64 h-full bg-white rounded-2xl hidden md:flex flex-col overflow-hidden shadow-sm">
       <div className="p-6">
         <h1 className="text-2xl font-bold text-primary">VENDY</h1>
       </div>
@@ -19,47 +35,46 @@ export function Sidebar() {
         <div className="mb-6">
           <p className="text-xs font-medium text-muted-foreground mb-4 uppercase tracking-wider px-2">Menu</p>
           <nav className="space-y-1">
-            <Link 
-              href="/dashboard" 
-              className="flex items-center gap-3 px-3 py-2.5 bg-primary text-primary-foreground rounded-md font-medium text-sm transition-colors"
-            >
-              <LayoutDashboard size={18} />
-              Dashboard
-            </Link>
-            <Link 
-              href="/dashboard/invoices" 
-              className="flex items-center gap-3 px-3 py-2.5 text-muted-foreground hover:bg-muted rounded-md font-medium text-sm transition-colors"
-            >
-              <FileText size={18} />
-              Invoices
-            </Link>
-            <Link 
-              href="/dashboard/credit-notes" 
-              className="flex items-center gap-3 px-3 py-2.5 text-muted-foreground hover:bg-muted rounded-md font-medium text-sm transition-colors"
-            >
-              <CreditCard size={18} />
-              Credit Notes
-            </Link>
+            {navItems.map((item) => {
+              const isActive = pathname === item.href
+              return (
+                <Link 
+                  key={item.href}
+                  href={item.href} 
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-md font-medium text-sm transition-colors ${
+                    isActive 
+                      ? "bg-primary text-primary-foreground" 
+                      : "text-muted-foreground hover:bg-muted"
+                  }`}
+                >
+                  <item.icon size={18} />
+                  {item.name}
+                </Link>
+              )
+            })}
           </nav>
         </div>
 
         <div className="mb-6">
           <p className="text-xs font-medium text-muted-foreground mb-4 uppercase tracking-wider px-2">Management</p>
           <nav className="space-y-1">
-            <Link 
-              href="/dashboard/customers" 
-              className="flex items-center gap-3 px-3 py-2.5 text-muted-foreground hover:bg-muted rounded-md font-medium text-sm transition-colors"
-            >
-              <Users size={18} />
-              Customers
-            </Link>
-            <Link 
-              href="/dashboard/products" 
-              className="flex items-center gap-3 px-3 py-2.5 text-muted-foreground hover:bg-muted rounded-md font-medium text-sm transition-colors"
-            >
-              <Package size={18} />
-              Items/Products
-            </Link>
+            {managementItems.map((item) => {
+              const isActive = pathname === item.href
+              return (
+                <Link 
+                  key={item.href}
+                  href={item.href} 
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-md font-medium text-sm transition-colors ${
+                    isActive 
+                      ? "bg-primary text-primary-foreground" 
+                      : "text-muted-foreground hover:bg-muted"
+                  }`}
+                >
+                  <item.icon size={18} />
+                  {item.name}
+                </Link>
+              )
+            })}
           </nav>
         </div>
       </div>
@@ -67,7 +82,11 @@ export function Sidebar() {
       <div className="p-4 border-t border-border">
         <Link 
           href="/dashboard/settings" 
-          className="flex items-center gap-3 px-3 py-2.5 text-muted-foreground hover:bg-muted rounded-md font-medium text-sm transition-colors"
+          className={`flex items-center gap-3 px-3 py-2.5 rounded-md font-medium text-sm transition-colors ${
+            pathname === "/dashboard/settings"
+              ? "bg-primary text-primary-foreground"
+              : "text-muted-foreground hover:bg-muted"
+          }`}
         >
           <Settings size={18} />
           Settings

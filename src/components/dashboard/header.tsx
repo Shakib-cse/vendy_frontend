@@ -2,7 +2,7 @@ import { Search, Bell } from "lucide-react"
 
 export function Header() {
   return (
-    <header className="h-20 bg-white border-b border-border flex items-center justify-between px-6 md:px-8 shrink-0">
+    <header className="h-20 bg-white rounded-2xl flex items-center justify-between px-6 md:px-8 shrink-0 shadow-sm">
       <div className="flex-1 max-w-md">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={18} />

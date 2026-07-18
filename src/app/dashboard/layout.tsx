@@ -4,14 +4,12 @@ import { Header } from "@/components/dashboard/header"
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="flex h-screen w-full bg-muted/30 text-foreground overflow-hidden font-sans">
+    <div className="flex h-screen w-full bg-[#f4f5f7] text-foreground overflow-hidden font-sans p-4 gap-4">
       <Sidebar />
-      <div className="flex flex-col flex-1 min-w-0">
+      <div className="flex flex-col flex-1 min-w-0 gap-4">
         <Header />
-        <main className="flex-1 overflow-auto p-4 md:p-6 lg:p-8">
-          <div className="mx-auto max-w-7xl">
-            {children}
-          </div>
+        <main className="flex-1 overflow-auto pb-4">
+          {children}
         </main>
       </div>
     </div>
