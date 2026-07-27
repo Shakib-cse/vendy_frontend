@@ -11,11 +11,10 @@ const Header = () => {
   const pathname = usePathname();
 
   const navLinks = [
-    { name: "Features", path: "/features" },
-    { name: "Industries", path: "/industries" },
+    { name: "Features", path: "/#features" },
     { name: "Pricing", path: "/pricing" },
-    { name: "Resources", path: "/resources" },
     { name: "Contact", path: "/contact" },
+    { name: "Support", path: "/support" },
   ];
 
   return (
@@ -32,7 +31,10 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-10">
           {navLinks.map((link) => {
-            const active = pathname.startsWith(link.path);
+            const active =
+              link.path === "/#features"
+                ? false
+                : pathname.startsWith(link.path);
 
             return (
               <Link
@@ -40,7 +42,7 @@ const Header = () => {
                 href={link.path}
                 className={`text-sm font-medium transition-colors ${
                   active
-                    ? "text-primary"
+                    ? "text-primary font-semibold"
                     : "text-muted-foreground hover:text-primary"
                 }`}
               >
@@ -52,16 +54,20 @@ const Header = () => {
 
         {/* Right Buttons */}
         <div className="hidden lg:flex items-center gap-3">
-          <Button className="rounded-xl px-7 h-11 bg-primary hover:bg-primary/80 text-white">
-            Log In
-          </Button>
+          <Link href="/login">
+            <Button className="rounded-xl px-7 h-11 bg-primary hover:bg-primary/80 text-white">
+              Log In
+            </Button>
+          </Link>
 
-          <Button
-            variant="outline"
-            className="rounded-xl px-7 h-11 border-muted-foreground text-muted-foreground hover:bg-muted"
-          >
-            Sign Up
-          </Button>
+          <Link href="/signup">
+            <Button
+              variant="outline"
+              className="rounded-xl px-7 h-11 border-muted-foreground text-muted-foreground hover:bg-muted"
+            >
+              Sign Up
+            </Button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -109,16 +115,20 @@ const Header = () => {
           ))}
 
           <div className="mt-6 flex flex-col gap-3">
-            <Button className="w-full h-11 rounded-xl bg-primary hover:bg-primary/80">
-              Log In
-            </Button>
+            <Link href="/login" onClick={() => setIsOpen(false)}>
+              <Button className="w-full h-11 rounded-xl bg-primary hover:bg-primary/80">
+                Log In
+              </Button>
+            </Link>
 
-            <Button
-              variant="outline"
-              className="w-full h-11 rounded-xl border-muted-foreground text-muted-foreground hover:bg-muted"
-            >
-              Sign Up
-            </Button>
+            <Link href="/signup" onClick={() => setIsOpen(false)}>
+              <Button
+                variant="outline"
+                className="w-full h-11 rounded-xl border-muted-foreground text-muted-foreground hover:bg-muted"
+              >
+                Sign Up
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

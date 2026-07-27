@@ -89,7 +89,7 @@ const features = [
 
 export default function FeaturesGrid() {
   return (
-    <section className="py-20 bg-background">
+    <section id="features" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         {/* Heading */}
         <div className="max-w-3xl mx-auto text-center mb-14">

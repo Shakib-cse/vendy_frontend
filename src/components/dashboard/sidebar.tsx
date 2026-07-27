@@ -1,18 +1,20 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { 
   LayoutDashboard, 
   FileText, 
   CreditCard, 
   Users, 
   Package, 
-  Settings 
+  Settings,
+  LogOut
 } from "lucide-react"
 
 export function Sidebar() {
   const pathname = usePathname()
+  const router = useRouter()
 
   const navItems = [
     { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
@@ -79,7 +81,7 @@ export function Sidebar() {
         </div>
       </div>
 
-      <div className="p-4 border-t border-border">
+      <div className="p-4 border-t border-border space-y-1">
         <Link 
           href="/dashboard/settings" 
           className={`flex items-center gap-3 px-3 py-2.5 rounded-md font-medium text-sm transition-colors ${
@@ -91,6 +93,14 @@ export function Sidebar() {
           <Settings size={18} />
           Settings
         </Link>
+
+        <button 
+          onClick={() => router.push("/")}
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-md font-medium text-sm text-red-600 hover:bg-red-50 transition-colors"
+        >
+          <LogOut size={18} />
+          Logout
+        </button>
       </div>
     </aside>
   )
