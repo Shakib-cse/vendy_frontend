@@ -1,15 +1,27 @@
-import { Search, Bell } from "lucide-react"
+import { Search, Bell, Menu } from "lucide-react"
 
-export function Header() {
+interface HeaderProps {
+  onMenuClick?: () => void
+}
+
+export function Header({ onMenuClick }: HeaderProps) {
   return (
-    <header className="h-20 bg-white rounded-2xl flex items-center justify-between px-6 md:px-8 shrink-0 shadow-sm">
-      <div className="flex-1 max-w-md">
-        <div className="relative">
+    <header className="h-20 bg-white rounded-2xl flex items-center justify-between px-4 md:px-8 shrink-0 shadow-sm gap-2">
+      <div className="flex items-center gap-3 flex-1 max-w-md">
+        <button
+          onClick={onMenuClick}
+          className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-muted shrink-0"
+          aria-label="Open sidebar"
+        >
+          <Menu size={22} />
+        </button>
+
+        <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={18} />
           <input
             type="text"
             placeholder="Search here..."
-            className="w-full pl-10 pr-12 py-2.5 bg-muted/50 border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all text-sm"
+            className="w-full pl-10 pr-4 sm:pr-12 py-2.5 bg-muted/50 border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all text-sm"
           />
           <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
             <kbd className="hidden sm:inline-flex h-5 items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
@@ -19,8 +31,8 @@ export function Header() {
         </div>
       </div>
 
-      <div className="flex items-center gap-6 ml-4">
-        <button className="relative p-2 text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-muted">
+      <div className="flex items-center gap-3 sm:gap-6 ml-2 sm:ml-4">
+        <button className="relative p-2 text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-muted shrink-0">
           <Bell size={20} />
           <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
         </button>
@@ -38,3 +50,4 @@ export function Header() {
     </header>
   )
 }
+
